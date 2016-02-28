@@ -11,9 +11,15 @@ namespace GestorDocumental.Codigo
     public class NodoCentral
     {
         public List<Nodo> nodos;
-        public bool cambios=true;
+        public bool cambios = true;
 
 
+        public NodoCentral()
+        {
+            nodos = new List<Nodo>();
+            cambios = true;
+
+        }
 
 
 
@@ -43,6 +49,20 @@ namespace GestorDocumental.Codigo
 
         }
 
+        public List<Nodo> buscar(string v)
+        {
+            List<Nodo> aux = new List<Nodo>();
+
+
+            foreach (var nodo in nodos)
+                if (nodo.buscar(v))
+                    aux.Add(nodo);
+
+            return aux;
+
+            
+        }
+
         public bool grabar(String filename)
         {
             try
@@ -65,5 +85,6 @@ namespace GestorDocumental.Codigo
                 return false;
             }
         }
+
     }
 }

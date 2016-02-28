@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GestorDocumental.Codigo
 {
@@ -21,6 +19,13 @@ namespace GestorDocumental.Codigo
 
 
 
+        public Nodo()
+        {
+            enlaces = new List<String>();
+            subcarpetas = new List<String>();
+
+        }
+
 
         public bool buscar(String texto)
         {
@@ -31,14 +36,14 @@ namespace GestorDocumental.Codigo
 
             foreach (var palabra in palabras)
             {
-                encontrado = encontrado | Utiles.ContainsIgnore(codigo, texto) | Utiles.ContainsIgnore(descripción, texto)
-                                        | Utiles.ContainsIgnore(otros, texto) | Utiles.ContainsIgnore(enlace, texto) | Utiles.ContainsIgnore(carpeta, texto);
+                encontrado = encontrado | Utiles.ContainsIgnore(codigo, palabra) | Utiles.ContainsIgnore(descripción, palabra)
+                                        | Utiles.ContainsIgnore(otros, palabra) | Utiles.ContainsIgnore(enlace, palabra) | Utiles.ContainsIgnore(carpeta, palabra);
 
                 if (encontrado == false)
-                    encontrado = encontrado | buscarLista(enlaces, texto);
+                    encontrado = encontrado | buscarLista(enlaces, palabra);
 
                 if (encontrado == false)
-                    encontrado = encontrado | buscarLista(subcarpetas, texto);
+                    encontrado = encontrado | buscarLista(subcarpetas, palabra);
 
 
                 if (encontrado) break;
