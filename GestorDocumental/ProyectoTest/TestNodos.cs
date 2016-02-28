@@ -43,7 +43,7 @@ namespace ProyectoTest
         }
 
         [TestMethod]
-        public void Exhaustivo()
+        public void ExhaustivoRecorrerDirectorios()
         {
             NodoCentral aux = new NodoCentral();
             Assert.AreNotEqual(null, aux);
@@ -65,6 +65,33 @@ namespace ProyectoTest
             Assert.AreEqual(1, aux.buscar("andorra").Count);
 
            
+
+        }
+
+        [TestMethod]
+
+        public void ExhaustivoComprobarSubNodos()
+        {
+            NodoCentral aux = new NodoCentral();
+            Assert.AreNotEqual(null, aux);
+
+
+            Nodo n = new Nodo();
+            n.codigo = "Seg fotos";
+            n.descripción = "Relacionado con fotos";
+            n.enlace = "http://www.heraldo.es";
+            n.enlaces.Add("http://www.heraldo.es/sobre.html");
+            n.enlaces.Add("http://www.heraldo.es.otro.html");
+            aux.nodos.Add(n);
+
+
+
+
+            Assert.AreEqual(2, aux.buscar("heraldo sobre")[0].buscarNodosContienenTexto("heraldo sobre").Count);
+            Assert.AreEqual(1, aux.buscar("palabraimposible sobre")[0].buscarNodosContienenTexto("palabraimposible sobre").Count);
+
+
+
 
         }
     }

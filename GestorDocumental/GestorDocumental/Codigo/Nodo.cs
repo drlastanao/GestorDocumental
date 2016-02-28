@@ -66,13 +66,14 @@ namespace GestorDocumental.Codigo
 
             string[] palabras = texto.Split(' ');
 
-
+           
             foreach (var palabra in palabras)
             {
                 List<String> aux;
 
                 aux = nodosContienen(subcarpetas, palabra);
                 nodos.AddRange(aux);
+                
                 aux = nodosContienen(enlaces, palabra);
                 nodos.AddRange(aux);
             }
