@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Codigo\Nodo.cs" />
+    <Compile Include="Codigo\NodoCentral.cs" />
     <Compile Include="Codigo\Utiles.cs" />
     <Compile Include="Interface\Form1.cs">
       <SubType>Form</SubType>

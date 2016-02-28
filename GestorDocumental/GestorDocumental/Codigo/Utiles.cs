@@ -20,6 +20,36 @@ namespace GestorDocumental.Codigo
             return source!=null && toCheck != null && source.IndexOf(toCheck, StringComparison.CurrentCultureIgnoreCase) >= 0;
         }
 
+
+        public static List<String> RecorrerDirectorios(string ruta)
+        {
+
+            System.IO.DirectoryInfo[] subDirs = null;
+            List<String> directorios = new List<String>();
+
+
+            System.IO.DirectoryInfo root = new System.IO.DirectoryInfo(ruta);
+
+            try
+            {
+
+
+
+                subDirs = root.GetDirectories();
+
+                foreach (System.IO.DirectoryInfo dirInfo in subDirs)
+                {
+                    directorios.Add(dirInfo.FullName);
+                }
+
+                return directorios;
+
+            }
+            catch (Exception)
+            { 
+                return new List<string>();
+            }
+        }
     }
 
 }
