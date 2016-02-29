@@ -94,5 +94,45 @@ namespace ProyectoTest
 
 
         }
+
+        [TestMethod]
+
+        public void PruebaGrabarLeer()
+        {
+            NodoCentral aux = new NodoCentral();
+            Assert.AreNotEqual(null, aux);
+
+
+            Nodo n = new Nodo();
+            n.codigo = "Seg fotos";
+            n.descripción = "Relacionado con fotos";
+            n.enlace = "";
+            n.carpeta = "d:\\seg fotos\\";
+
+            n.subcarpetas.AddRange(Utiles.RecorrerDirectorios(n.carpeta));
+
+            aux.nodos.Add(n);
+
+
+            Assert.AreEqual(0, aux.buscar("google").Count);
+            Assert.AreEqual(1, aux.buscar("palabraimposible bilbao").Count);
+            Assert.AreEqual(1, aux.buscar("andorra").Count);
+
+
+            aux.grabar("c:\\pu\\nodos.xml");
+
+            aux = new NodoCentral();
+
+
+            aux=aux.leer("c:\\pu\\nodos.xml");
+
+            Assert.AreNotEqual(null, aux);
+            Assert.AreEqual(0, aux.buscar("google").Count);
+            Assert.AreEqual(1, aux.buscar("palabraimposible bilbao").Count);
+            Assert.AreEqual(1, aux.buscar("andorra").Count);
+
+
+
+        }
     }
 }
