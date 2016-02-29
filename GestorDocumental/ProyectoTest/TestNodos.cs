@@ -134,5 +134,20 @@ namespace ProyectoTest
 
 
         }
+
+        [TestMethod]
+        public void pruebaBusqueda()
+        {
+            NodoCentral aux = new NodoCentral();
+            aux = aux.leer("c:\\pu\\nodos.xml");
+           
+            Assert.AreEqual(4, aux.buscarResultados("andorra",true).Count);
+            
+
+            
+
+        }
+
+
     }
 }

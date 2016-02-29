@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GestorDocumental.Codigo;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,27 @@ namespace GestorDocumental
 {
     public partial class Form1 : Form
     {
+        private NodoCentral nodo = new NodoCentral();
+
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            nodo=nodo.leer("c:\\pu\\nodos.xml");
+
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            List<Resultado> resultado = new List<Resultado>();
+            resultado = nodo.buscarResultados(textBox1.Text.Trim(), checkBox1.Checked);
+             dataGridView1.DataSource = resultado;
+
+
         }
     }
 }

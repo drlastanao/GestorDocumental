@@ -64,7 +64,37 @@ namespace GestorDocumental.Codigo
         }
 
 
-       
+
+        public List<Resultado> buscarResultados(string texto, bool subnodos = false)
+        {
+            List<Resultado> aux = new List<Resultado>();
+
+
+            foreach (var nodo in nodos)
+                if (nodo.buscar(texto))
+                {
+                    Resultado re = new Resultado();
+                    re.cargaDesdeNodo(nodo);
+                    aux.Add(re);
+
+                    if (subnodos)
+                    {
+                        List<String> resultados = nodo.buscarNodosContienenTexto(texto);
+                        foreach (var result in resultados)
+                        {
+                            Resultado re2 = new Resultado();
+                            re2.cargaDesdeString("subnodo", result.ToString());
+                            aux.Add(re2);
+                        }
+                    }
+
+                }
+
+            return aux;
+        }
+
+
+
 
         public bool grabar(String filename)
         {

@@ -36,7 +36,7 @@ namespace GestorDocumental.Codigo
 
             foreach (var palabra in palabras)
             {
-                encontrado = encontrado | Utiles.ContainsIgnore(codigo, palabra) | Utiles.ContainsIgnore(descripción, palabra)
+                encontrado = encontrado |palabra=="" | Utiles.ContainsIgnore(codigo, palabra) | Utiles.ContainsIgnore(descripción, palabra)
                                         | Utiles.ContainsIgnore(otros, palabra) | Utiles.ContainsIgnore(enlace, palabra) | Utiles.ContainsIgnore(carpeta, palabra);
 
                 if (encontrado == false)
@@ -89,7 +89,7 @@ namespace GestorDocumental.Codigo
         private bool buscarLista(List<string> lista, string texto)
         {
             foreach (var item in lista)
-                if (Utiles.ContainsIgnore(item.ToString(), texto))
+                if (texto=="" | (Utiles.ContainsIgnore(item.ToString(), texto)))
                     return true;
 
             return false;
@@ -103,7 +103,7 @@ namespace GestorDocumental.Codigo
             List<String> devuelvelista = new List<string>();
 
             foreach (var item in lista)
-                if (Utiles.ContainsIgnore(item.ToString(), texto))
+                if (texto=="" | (Utiles.ContainsIgnore(item.ToString(), texto)))
                     devuelvelista.Add(item.ToString());
 
             return devuelvelista;

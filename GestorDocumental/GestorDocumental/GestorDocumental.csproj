@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Codigo\Nodo.cs" />
     <Compile Include="Codigo\NodoCentral.cs" />
+    <Compile Include="Codigo\Resultado.cs" />
     <Compile Include="Codigo\Utiles.cs" />
     <Compile Include="Interface\Form1.cs">
       <SubType>Form</SubType>
@@ -57,6 +58,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Interface\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
